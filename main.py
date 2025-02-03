@@ -1,13 +1,4 @@
 from fastapi import FastAPI
-from mangum import Mangum  # Mangum makes FastAPI work with AWS Lambda
-
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello from FastAPI on AWS Lambda!"}
-
-handler = Mangum(app)  # This converts FastAPI to a Lambda handler
 
 app = FastAPI()
 
