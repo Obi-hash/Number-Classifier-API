@@ -45,17 +45,24 @@ def classify_number(number: int):
         properties.append("armstrong")
     properties.append("even" if number % 2 == 0 else "odd")
 
+    # Custom fun fact for Armstrong numbers
+    fun_fact = get_fun_fact(number)
+    if is_armstrong(number):
+        digits = [int(d) for d in str(number)]
+        power = len(digits)
+        armstrong_fact = f"{number} is an Armstrong number because " + " + ".join(f"{d}^{power}" for d in digits) + f" = {number}"
+        fun_fact = armstrong_fact
+
     result = {
         "number": number,
         "is_prime": is_prime(number),
         "is_perfect": is_perfect(number),
         "properties": properties,
         "digit_sum": sum(int(digit) for digit in str(number)),
-        "fun_fact": get_fun_fact(number)
+        "fun_fact": fun_fact
     }
     return result
 
 @app.get("/")
 def root():
     return {"message": "Number Classification API is running!"}
-
