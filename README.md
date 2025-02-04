@@ -23,6 +23,7 @@ This API takes a number as input and returns interesting mathematical properties
   }
 
 Requirements
+
   Technology Stack: Python, Flask
 
   Must be deployed to a publicly accessible endpoint
@@ -39,25 +40,31 @@ Requirements
 Setup Instructions
 
   1. Clone the repository:
-     git clone https://github.com/Obi-hash/number-classifier-api.git
-     cd number-classifier-api
+
+       git clone https://github.com/Obi-hash/number-classifier-api.git
+       cd number-classifier-api
 
   2. Install dependencies:
-     pip install -r requirements.txt
 
-  3. Run the API locally
-     python main.py
+       pip install -r requirements.txt
+
+  3. Run the API locally:
+
+       python main.py
 
   4. Deploy to Render or another cloud service.
 
   Deployment
-  To deploy the API, follow the instructions for Render or another cloud provider.
+
+    To deploy the API, follow the instructions for Render or another cloud provider.
 
   Contribution
-  Feel free to contribute! Fork the repo, make your changes, and submit a pull request.
+
+    Feel free to contribute! Fork the repo, make your changes, and submit a pull request.
 
   License
-  MIT License.
+
+    MIT License.
   
     
 ---
