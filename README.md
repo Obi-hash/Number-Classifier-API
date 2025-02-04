@@ -55,13 +55,16 @@ Setup Instructions
   4. Deploy to Render or another cloud service.
 
   Deployment
+
      To deploy the API, follow the instructions for Render or another cloud provider.
 
   Contribution
+
      Feel free to contribute! Fork the repo, make your changes, and submit a pull request.
 
   License
-     MIT License.
+ 
+    MIT License.
   
 
 
