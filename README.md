@@ -42,6 +42,7 @@ Setup Instructions
   1. Clone the repository:
 
        git clone https://github.com/Obi-hash/number-classifier-api.git
+      
        cd number-classifier-api
 
   2. Install dependencies:
