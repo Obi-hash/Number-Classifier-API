@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query, status
 from fastapi.responses import JSONResponse
+import requests
 
 app = FastAPI()
 
@@ -32,11 +33,11 @@ def is_armstrong(n):
 def get_fun_fact(n):
     try:
         response = requests.get(f"http://numbersapi.com/{n}/math", timeout=3)
-        if response.status_code == 200:
-            return response.text
-    except requests.exceptions.RequestException:
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching fun fact: {e}")
         return "Fun fact unavailable."
-    return "Fun fact unavailable."
 
 @app.get("/api/classify-number")
 def classify_number(number: str = Query(...)):
