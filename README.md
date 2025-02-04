@@ -67,9 +67,10 @@ Setup Instructions
     MIT License.
   
     
+
 ---
 
-### **4️⃣ Save and P push to GitHub**  
+### **4️⃣ Save and Push to GitHub**  
 After adding the content, **save and exit**:  
 - In **nano**, press `CTRL + X`, then `Y`, then `Enter`.  
 
@@ -78,4 +79,5 @@ Then, **commit and push**:
 git add README.md
 git commit -m "Added project details to README.md"
 git push origin main
+
 
