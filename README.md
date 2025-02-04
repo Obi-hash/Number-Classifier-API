@@ -55,29 +55,13 @@ Setup Instructions
   4. Deploy to Render or another cloud service.
 
   Deployment
-
-    To deploy the API, follow the instructions for Render or another cloud provider.
+     To deploy the API, follow the instructions for Render or another cloud provider.
 
   Contribution
-
-    Feel free to contribute! Fork the repo, make your changes, and submit a pull request.
+     Feel free to contribute! Fork the repo, make your changes, and submit a pull request.
 
   License
-
-    MIT License.
+     MIT License.
   
-    
-
----
-
-### **4️⃣ Save and Push to GitHub**  
-After adding the content, **save and exit**:  
-- In **nano**, press `CTRL + X`, then `Y`, then `Enter`.  
-
-Then, **commit and push**:  
-```bash
-git add README.md
-git commit -m "Added project details to README.md"
-git push origin main
 
 
