@@ -1,5 +1,4 @@
-from fastapi import FastAPI, Query, status
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException
 import requests
 
 app = FastAPI()
@@ -33,46 +32,33 @@ def is_armstrong(n):
 def get_fun_fact(n):
     try:
         response = requests.get(f"http://numbersapi.com/{n}/math", timeout=3)
-        response.raise_for_status()  # Raise an exception for HTTP errors
-        return response.text
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching fun fact: {e}")
+        if response.status_code == 200:
+            return response.text
+    except requests.exceptions.RequestException:
         return "Fun fact unavailable."
+    return "Fun fact unavailable."
 
 @app.get("/api/classify-number")
-def classify_number(number: str = Query(...)):
-    try:
-        # Try to convert the input to an integer
-        number_int = int(number)
-    except ValueError:
-        # If conversion fails, return a 400 Bad Request with the required JSON format
-        return JSONResponse(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            content={
-                "number": number,
-                "error": True
-            }
-        )
-
+def classify_number(number: int):
     properties = []
-    if is_armstrong(number_int):
+    if is_armstrong(number):
         properties.append("armstrong")
-    properties.append("even" if number_int % 2 == 0 else "odd")
+    properties.append("even" if number % 2 == 0 else "odd")
 
     # Custom fun fact for Armstrong numbers
-    fun_fact = get_fun_fact(number_int)
-    if is_armstrong(number_int):
-        digits = [int(d) for d in str(number_int)]
+    fun_fact = get_fun_fact(number)
+    if is_armstrong(number):
+        digits = [int(d) for d in str(number)]
         power = len(digits)
-        armstrong_fact = f"{number_int} is an Armstrong number because " + " + ".join(f"{d}^{power}" for d in digits) + f" = {number_int}"
+        armstrong_fact = f"{number} is an Armstrong number because " + " + ".join(f"{d}^{power}" for d in digits) + f" = {number}"
         fun_fact = armstrong_fact
 
     result = {
-        "number": number_int,
-        "is_prime": is_prime(number_int),
-        "is_perfect": is_perfect(number_int),
+        "number": number,
+        "is_prime": is_prime(number),
+        "is_perfect": is_perfect(number),
         "properties": properties,
-        "digit_sum": sum(int(digit) for digit in str(number_int)),
+        "digit_sum": sum(int(digit) for digit in str(number)),
         "fun_fact": fun_fact
     }
     return result
